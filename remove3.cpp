@@ -1,0 +1,24 @@
+#include <algorithm>
+#include <list>
+#include <iterator>
+#include <iostream>
+using namespace std;
+
+int main() 
+{
+	list<int> coll;
+	for (int i=1; i<=6; ++i) {
+		coll.push_front(i);
+		coll.push_back(i);
+	}
+
+	copy(coll.cbegin(), coll.cend(), ostream_iterator<int>(cout, " "));
+	cout << endl;
+	coll.erase(remove(coll.begin(), coll.end(), 3), coll.end());
+	coll.remove(4);
+
+	copy(coll.cbegin(), coll.cend(), ostream_iterator<int>(cout, " "));
+	cout << endl;
+	return 0;
+}
+
